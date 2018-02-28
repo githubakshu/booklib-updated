@@ -21,6 +21,7 @@ class Library{
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name= "libid")
     private List<Book> book;
+    
     public Library(){
         super();
     }
@@ -53,6 +54,15 @@ public void setsection(int c){
 public void setlocation(String d){
     location=d;
 }
+
+	public List<Book> getbook() {
+		return book;
+	}
+
+public void setbook(List<Book> v) {
+		this.book = v;
+	}
+
 
 
 

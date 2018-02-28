@@ -34,23 +34,23 @@ public class LibraryController{
     public ResponseEntity<?> post(@RequestBody Library library, UriComponentsBuilder ucBuilder) {
         libraryService.save(library);
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/get/{id}").buildAndExpand(library.getlibid()).toUri());
+        headers.setLocation(ucBuilder.path("/get/{libid}").buildAndExpand(library.getlibid()).toUri());
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
     
-         @GetMapping("/get/{eventId}")
+         @GetMapping("/get/{libid}")
     public @ResponseBody ResponseEntity<?> getById(@PathVariable int libId) {
 
         Library library = libraryService.find(libId);
         return new ResponseEntity<>(library, HttpStatus.OK);
     }
-     @PutMapping("/put/{eventId}")
+     @PutMapping("/put/{libid}")
     public ResponseEntity<?> put(@PathVariable Long libId, @RequestBody Library library) {
 libraryService.save(library);
         return new ResponseEntity<>(library, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{eventId}")
+    @DeleteMapping("/delete/{libid}")
     public ResponseEntity<?> delete(@PathVariable int libId) {
         //Event currentevent = eventService.find(eventId);
         libraryService.delete(libId);

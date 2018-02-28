@@ -7,18 +7,19 @@ import javax.persistence.*;
 public class Book{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column
-    private long bookid;
+     private long bookid;
     @Column
     private String name;
     @Column
     private float price;
-     @Column
+     @Column 
     private String type;
 
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="libid", updatable=false, insertable=true)
     private Library library;
+    public Book() {
+		super();}
     public long getbookid()
         {
           return bookid;
